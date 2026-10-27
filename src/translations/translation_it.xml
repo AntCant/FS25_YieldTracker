@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<l10n>
+    <texts>
+        <text name="yt_modName" text="Monitoraggio della resa"/>
+        <text name="yt_showAllFieldsBtnTxt" text="Mostra tutti i campi"/>
+        <text name="yt_showOwnedFieldsBtnTxt" text="Mostra i campi posseduti"/>
+        <text name="yt_selectFieldLabel" text="Seleziona campo"/>
+        <text name="yt_selectCropLabel" text="Seleziona coltura"/>
+        <text name="yt_overviewLabel" text="Panoramica"/>
+        <text name="yt_totalYieldLabel" text="Resa totale"/>
+        <text name="yt_graphTitle" text="Ultimi 20 anni"/>
+        <text name="yt_noYieldHistoryMsg" text="Nessuna cronologia delle rese"/>
+        <text name="yt_fieldIDLabel" text="Campo"/>
+        <text name="yt_yearLabel" text="Anno"/>
+        <text name="yt_cropTypeLabel" text="Tipo di coltura:"/>
+        <text name="yt_totalHarvestsLabel" text="Raccolti totali:"/>
+        <text name="yt_averageYearTitleLabel" text="Resa media:"/>
+        <text name="yt_bestYearLabel" text="Anno migliore:"/>
+        <text name="wheatLabel" text="Grano"/>
+        <text name="canolaLabel" text="Colza"/>
+        <text name="grapesLabel" text="Uva"/>
+        <text name="olivesLabel" text="Olive"/>
+        <text name="carrotsLabel" text="Carote"/>
+        <text name="spinachLabel" text="Spinaci"/>
+        <text name="cornLabel" text="Mais"/>
+        <text name="peasLabel" text="Piselli"/>
+        <text name="potatoesLabel" text="Patate"/>
+        <text name="oatLabel" text="Avena"/>
+        <text name="barleyLabel" text="Orzo"/>
+        <text name="cottonLabel" text="Cotone"/>
+        <text name="grassLabel" text="Erba"/>
+        <text name="strawLabel" text="Paglia"/>
+        <text name="hayLabel" text="Fieno"/>
+        <text name="greenbeansLabel" text="Fagiolini"/>
+        <text name="longgrainriceLabel" text="Riso a chicco lungo"/>
+        <text name="riceLabel" text="Riso"/>
+        <text name="sorghumLabel" text="Sorgo"/>
+        <text name="soybeansLabel" text="Soia"/>
+        <text name="sunflowersLabel" text="Girasoli"/>
+        <text name="chaffLabel" text="Pula"/>
+    </texts>
+</l10n>

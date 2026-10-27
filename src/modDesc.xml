@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<modDesc descVersion="110">
+<author>AntCant</author>
+<version>1.0.0.2</version>
+<title>
+<en>Yield Tracker</en>
+<de>Ertrags-Tracker</de>
+<fr>Suivi Du Rendement</fr>
+<it>Monitoraggio Della Resa</it>
+</title>
+<description>
+<en>
+<![CDATA[
+Note: This mod currently supports Singleplayer mode only on PC/Mac.
+
+YieldTracker helps you keep track of your harvests across different fields and years. It logs total yields by crop (fill type), field number, and year, so you can easily monitor your farm’s performance over time.
+
+Works with both AI workers and contract jobs.
+
+Supported Fill Types (19):
+- Barley
+- Canola
+- Chaff
+- Corn
+- Cotton
+- Grass (baler only)
+- Green Beans
+- Hay (baler only)
+- Long Grain Rice
+- Oat
+- Peas
+- Potatoes
+- Rice
+- Sorghum
+- Soybeans
+- Spinach
+- Straw (baler only)
+- Sunflowers
+- Wheat
+
+Changelog 
+1.0.1
+* Added polish translation
+* Added Czech translation
+* Added Portuguese translation
+* Added Brazilian Portuguese translation
+* Fixed German translation errors
+
+1.0.2
+* Fixed Czech translation file from error (@cert23)
+* Added Italian translation (@FirenzeIT)
+* Added translation for the "Show All Fields" & "Show Owned Fields" button text
+
+
+
+Feedback or issues?
+Report bugs or contribute on GitHub: https://github.com/BitBarn-Mods/FS25_YieldTracker
+]]>
+</en>
+
+<de>
+<![CDATA[
+Hinweis: Dieses Mod unterstützt derzeit nur den Einzelspielermodus auf PC/Mac.
+
+YieldTracker hilft dir, deine Ernteerträge über verschiedene Felder und Jahre hinweg zu verfolgen. Es protokolliert die Gesamterträge nach Fruchtart (Fülltyp), Feldnummer und Jahr, sodass du die Leistung deiner Felder im Blick behalten kannst.
+
+Funktioniert sowohl mit Helfern als auch mit Aufträgen.
+
+Unterstützte Fülltypen (19):
+- Baumwolle
+- Chaff
+- Erbsen
+- Gerste
+- Gras (nur Ballenpresse)
+- Grüne Bohnen
+- Hafer
+- Heu (nur Ballenpresse)
+- Häckselgut
+- Kartoffeln
+- Langkornreis
+- Mais
+- Reis
+- Raps
+- Sojabohnen
+- Sorghum
+- Spinat
+- Stroh (nur Ballenpresse)
+- Weizen
+- Sonnenblumen
+
+Änderungsprotokoll
+1.0.1
+* Polnische Übersetzung hinzugefügt
+* Tschechische Übersetzung hinzugefügt
+* Portugiesische Übersetzung hinzugefügt
+* Brasilianisch-Portugiesische Übersetzung hinzugefügt
+* Fehler in der deutschen Übersetzung behoben
+
+1.0.2
+* Tschechische Übersetzungsdatei von cs auf cz korrigiert (@cert23)
+* Italienische Übersetzung hinzugefügt (@FirenzeIT)
+* Übersetzung für die Schaltflächentexte "Alle Felder anzeigen" & "Eigene Felder anzeigen" hinzugefügt
+
+Fragen oder Probleme?
+Fehler melden oder mithelfen auf GitHub: https://github.com/BitBarn-Mods/FS25_YieldTracker
+]]>
+</de>
+
+<fr>
+<![CDATA[
+Remarque : Ce mod prend actuellement en charge uniquement le mode solo sur PC/Mac.
+
+YieldTracker vous aide à suivre vos rendements de récolte sur différents champs et années. Il enregistre les rendements totaux par type de culture (type de remplissage), numéro de champ et année, afin que vous puissiez facilement surveiller la performance de votre exploitation.
+
+Fonctionne avec les ouvriers IA ainsi que les contrats.
+
+Types de remplissage pris en charge (19) :
+- Coton
+- Chaff
+- Pois
+- Orge
+- Herbe (pressage uniquement)
+- Haricots verts
+- Avoine
+- Foin (pressage uniquement)
+- Ensilage
+- Pommes de terre
+- Riz long grain
+- Maïs
+- Riz
+- Colza
+- Soja
+- Sorgho
+- Épinards
+- Paille (pressage uniquement)
+- Blé
+- Tournesols
+
+Journal des modifications
+1.0.1
+* Traduction polonaise ajoutée
+* Traduction tchèque ajoutée
+* Traduction portugaise ajoutée
+* Traduction portugais brésilien ajoutée
+* Corrections des erreurs de traduction en allemand
+
+1.0.2
+* Correction du fichier de traduction tchèque de cs à cz (@cert23)
+* Ajout de la traduction italienne (@FirenzeIT)
+* Ajout de la traduction des textes des boutons "Afficher Tous Les Champs" & "Afficher Mes Champs"
+
+Des questions ou des problèmes ?
+Signalez les bugs ou contribuez sur GitHub : https://github.com/BitBarn-Mods/FS25_YieldTracker
+]]>
+</fr>
+<it>
+<![CDATA[
+Nota: questa mod attualmente supporta la modalità giocatore singolo solo su PC/Mac.
+
+Il monitoraggio della resa, ti aiuta a tenere traccia dei tuoi raccolti in diversi campi e anni. Registra le rese totali per coltura (tipo di riempimento), numero di campo e anno, così puoi monitorare facilmente le prestazioni della tua fattoria nel tempo.
+
+Funziona sia con i lavoratori IA che con i lavori a contratto.
+
+Tipi di riempimento supportati (19):
+- Orzo
+- Colza
+- Pula
+- Mais
+- Cotone
+- Erba (solo per pressa)
+- Fagiolini
+- Fieno (solo per pressa)
+- Riso a chicco lungo
+- Avena
+- Piselli
+- Patate
+- Riso
+- Sorgo
+- Soia
+- Spinaci
+- Paglia (solo per pressa)
+- Girasoli
+- Grano
+
+Changelog
+1.0.1
+* Aggiunta traduzione in polacco
+* Aggiunta traduzione in ceco
+* Aggiunta traduzione in portoghese
+* Aggiunta traduzione in portoghese brasiliano
+* Corretti errori di traduzione in tedesco
+
+1.0.2
+* Corretto il file di traduzione ceco da cs a cz (@cert23)
+* Aggiunta traduzione in italiano (@FirenzeIT)
+* Aggiunta la traduzione per il testo dei pulsanti "Mostra tutti i campi" & "Mostra i campi posseduti"
+
+Feedback o problemi?
+Segnala bug o contribuisci su GitHub: https://github.com/BitBarn-Mods/FS25_YieldTracker
+]]>
+</it>
+</description>
+
+<iconFilename>icon_YieldTracker.dds</iconFilename>
+<multiplayer supported="false"/>
+<l10n filenamePrefix="translations/translation"/>
+<extraSourceFiles>
+<sourceFile filename="main.lua"/>
+</extraSourceFiles>
+</modDesc>
