@@ -24,27 +24,26 @@ Whether you're managing fields on your own or working with **AI workers** or **c
 
 ---
 
-## 📦 Supported Fill Types (19)
+## 📦 Supported Crops
 
-- Barley  
-- Canola  
-- Chaff  
-- Corn  
-- Cotton  
-- Grass *(baler only)*  
-- Green Beans  
-- Hay *(baler only)*  
-- Long Grain Rice  
-- Oat  
-- Peas  
-- Potatoes  
-- Rice  
-- Sorghum  
-- Soybeans  
-- Spinach  
-- Straw *(baler only)*  
-- Sunflowers  
-- Wheat
+**Every crop on any map**, including custom map and mod crops. There is no fixed crop list: a crop shows up in the menu as soon as it has been harvested.
+
+- **Harvesters:** everything delivered by combines, forage harvesters, root crop, cotton, sugarcane, grape and olive harvesters (base game and modded)
+- **Balers & loader wagons:** straw, grass, hay and any other windrow they pick up, recorded on the farmland it was picked up from
+
+### How it works
+
+Yield is recorded at the moment the game turns crop on the ground into liters, rather than by watching tank levels:
+
+| Source | Hook | Amount recorded |
+|---|---|---|
+| Harvesters | `Combine:addCutterArea` | Liters accepted by the harvester (after rain/damage/additive effects) |
+| Balers | `Baler:onEndWorkAreaProcessing` | Windrow liters picked up |
+| Loader wagons | `ForageWagon:onEndWorkAreaProcessing` | Windrow liters picked up |
+
+Yield is attributed to the farmland under the header/pickup.
+
+Material unloaded back onto the ground (trailers, loader wagons and front loaders tipping, or bales cut open) is remembered per farmland. When a baler, loader wagon or pickup header later collects it, that amount is deducted first, so the same straw/grass/hay is never counted twice. Save data stores crops by fill type name (e.g. `WHEAT`), so it stays correct when maps or mods add or remove fill types. Yield history from older versions is converted automatically. Amounts recorded by older versions may be less accurate than new ones.
 
 ---
 

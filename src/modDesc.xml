@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="110">
 <author>AntCant</author>
-<version>1.0.0.2</version>
+<version>1.1.0.0</version>
 <title>
 <en>Yield Tracker</en>
 <de>Ertrags-Tracker</de>
@@ -17,44 +17,36 @@ YieldTracker helps you keep track of your harvests across different fields and y
 
 Works with both AI workers and contract jobs.
 
-Supported Fill Types (19):
-- Barley
-- Canola
-- Chaff
-- Corn
-- Cotton
-- Grass (baler only)
-- Green Beans
-- Hay (baler only)
-- Long Grain Rice
-- Oat
-- Peas
-- Potatoes
-- Rice
-- Sorghum
-- Soybeans
-- Spinach
-- Straw (baler only)
-- Sunflowers
-- Wheat
+Tracks every crop on any map, including custom map and mod crops:
+- Everything harvested with a combine, forage harvester, root crop, cotton, sugarcane, grape or olive harvester
+- Straw, grass and hay picked up by balers and loader wagons, recorded on the farmland it was picked up from
 
-Changelog 
-1.0.1
+Changelog
+1.0.0.1
 * Added polish translation
 * Added Czech translation
 * Added Portuguese translation
 * Added Brazilian Portuguese translation
 * Fixed German translation errors
 
-1.0.2
+1.0.0.2
 * Fixed Czech translation file from error (@cert23)
 * Added Italian translation (@FirenzeIT)
 * Added translation for the "Show All Fields" & "Show Owned Fields" button text
 
+1.1.0.0
+* Yield is now recorded directly from the harvest itself, which fixes missed yield while unloading on the move and wrong amounts when switching trailers
+* Supports all crops on any map, including custom map/mod crops (no more fixed crop list)
+* Added carrots, red beet, parsnips, sugar beet, sugarcane, grapes and olives
+* Added loader wagon pickups (grass, hay, straw)
+* Material unloaded back onto the ground (e.g. dumped straw, cut open bales) is not counted again when it is picked up
+* Save data now stores crops by name, so it stays correct when maps or mods are added or removed
+* Yield history from older versions is converted automatically. Amounts recorded by older versions may be less accurate than new ones.
+
 
 
 Feedback or issues?
-Report bugs or contribute on GitHub: https://github.com/AntCant/FS25_YieldTracker
+Report bugs on GitHub: https://github.com/AntCant/FS25_YieldTracker
 ]]>
 </en>
 
@@ -66,43 +58,34 @@ YieldTracker hilft dir, deine Ernteerträge über verschiedene Felder und Jahre 
 
 Funktioniert sowohl mit Helfern als auch mit Aufträgen.
 
-Unterstützte Fülltypen (19):
-- Baumwolle
-- Chaff
-- Erbsen
-- Gerste
-- Gras (nur Ballenpresse)
-- Grüne Bohnen
-- Hafer
-- Heu (nur Ballenpresse)
-- Häckselgut
-- Kartoffeln
-- Langkornreis
-- Mais
-- Reis
-- Raps
-- Sojabohnen
-- Sorghum
-- Spinat
-- Stroh (nur Ballenpresse)
-- Weizen
-- Sonnenblumen
+Erfasst jede Fruchtart auf jeder Karte, auch Karten- und Mod-Früchte:
+- Alles, was mit Mähdrescher, Feldhäcksler, Roder, Baumwoll-, Zuckerrohr-, Trauben- oder Olivenernter geerntet wird
+- Stroh, Gras und Heu, das von Ballenpressen und Ladewagen aufgenommen wird, auf dem Feld, auf dem es aufgenommen wurde
 
 Änderungsprotokoll
-1.0.1
+1.0.0.1
 * Polnische Übersetzung hinzugefügt
 * Tschechische Übersetzung hinzugefügt
 * Portugiesische Übersetzung hinzugefügt
 * Brasilianisch-Portugiesische Übersetzung hinzugefügt
 * Fehler in der deutschen Übersetzung behoben
 
-1.0.2
+1.0.0.2
 * Tschechische Übersetzungsdatei von cs auf cz korrigiert (@cert23)
 * Italienische Übersetzung hinzugefügt (@FirenzeIT)
 * Übersetzung für die Schaltflächentexte "Alle Felder anzeigen" & "Eigene Felder anzeigen" hinzugefügt
 
+1.1.0.0
+* Erträge werden jetzt direkt bei der Ernte erfasst (behebt fehlende Erträge beim Überladen während der Fahrt und falsche Mengen beim Anhängerwechsel)
+* Unterstützt alle Fruchtarten auf jeder Karte, auch Karten-/Mod-Früchte (keine feste Fruchtliste mehr)
+* Karotten, Rote Bete, Pastinaken, Zuckerrüben, Zuckerrohr, Trauben und Oliven hinzugefügt
+* Ladewagen hinzugefügt (Gras, Heu, Stroh)
+* Material, das wieder auf den Boden abgeladen wurde (z. B. abgekipptes Stroh, aufgeschnittene Ballen), wird beim erneuten Aufnehmen nicht doppelt gezählt
+* Speicherdaten speichern Fruchtarten jetzt nach Namen, damit sie beim Hinzufügen oder Entfernen von Karten/Mods korrekt bleiben
+* Der Ertragsverlauf aus älteren Versionen wird automatisch übernommen. Mengen, die von älteren Versionen erfasst wurden, können ungenauer sein als neue.
+
 Fragen oder Probleme?
-Fehler melden oder mithelfen auf GitHub: https://github.com/AntCant/FS25_YieldTracker
+Fehler melden auf GitHub: https://github.com/AntCant/FS25_YieldTracker
 ]]>
 </de>
 
@@ -114,43 +97,34 @@ YieldTracker vous aide à suivre vos rendements de récolte sur différents cham
 
 Fonctionne avec les ouvriers IA ainsi que les contrats.
 
-Types de remplissage pris en charge (19) :
-- Coton
-- Chaff
-- Pois
-- Orge
-- Herbe (pressage uniquement)
-- Haricots verts
-- Avoine
-- Foin (pressage uniquement)
-- Ensilage
-- Pommes de terre
-- Riz long grain
-- Maïs
-- Riz
-- Colza
-- Soja
-- Sorgho
-- Épinards
-- Paille (pressage uniquement)
-- Blé
-- Tournesols
+Suit toutes les cultures sur n'importe quelle carte, y compris les cultures de cartes et de mods :
+- Tout ce qui est récolté avec une moissonneuse, une ensileuse, une arracheuse, une récolteuse de coton, de canne à sucre, de raisin ou d'olives
+- La paille, l'herbe et le foin ramassés par les presses et les autochargeuses, sur la parcelle où ils ont été ramassés
 
 Journal des modifications
-1.0.1
+1.0.0.1
 * Traduction polonaise ajoutée
 * Traduction tchèque ajoutée
 * Traduction portugaise ajoutée
 * Traduction portugais brésilien ajoutée
 * Corrections des erreurs de traduction en allemand
 
-1.0.2
+1.0.0.2
 * Correction du fichier de traduction tchèque de cs à cz (@cert23)
 * Ajout de la traduction italienne (@FirenzeIT)
 * Ajout de la traduction des textes des boutons "Afficher Tous Les Champs" & "Afficher Mes Champs"
 
+1.1.0.0
+* Le rendement est désormais enregistré directement lors de la récolte (corrige les rendements manqués lors du déchargement en mouvement et les quantités erronées lors d'un changement de remorque)
+* Prend en charge toutes les cultures sur n'importe quelle carte, y compris les cultures de cartes/mods (plus de liste fixe)
+* Ajout des carottes, betteraves rouges, panais, betteraves sucrières, canne à sucre, raisins et olives
+* Ajout des autochargeuses (herbe, foin, paille)
+* Le matériau redéchargé au sol (ex. paille déversée, balles ouvertes) n'est plus compté une seconde fois lorsqu'il est ramassé
+* Les données de sauvegarde enregistrent désormais les cultures par nom afin de rester correctes lors de l'ajout ou du retrait de cartes/mods
+* L'historique des rendements des anciennes versions est converti automatiquement. Les quantités enregistrées par les anciennes versions peuvent être moins précises que les nouvelles.
+
 Des questions ou des problèmes ?
-Signalez les bugs ou contribuez sur GitHub : https://github.com/AntCant/FS25_YieldTracker
+Signalez les bugs sur GitHub : https://github.com/AntCant/FS25_YieldTracker
 ]]>
 </fr>
 <it>
@@ -161,42 +135,34 @@ Il monitoraggio della resa, ti aiuta a tenere traccia dei tuoi raccolti in diver
 
 Funziona sia con i lavoratori IA che con i lavori a contratto.
 
-Tipi di riempimento supportati (19):
-- Orzo
-- Colza
-- Pula
-- Mais
-- Cotone
-- Erba (solo per pressa)
-- Fagiolini
-- Fieno (solo per pressa)
-- Riso a chicco lungo
-- Avena
-- Piselli
-- Patate
-- Riso
-- Sorgo
-- Soia
-- Spinaci
-- Paglia (solo per pressa)
-- Girasoli
-- Grano
+Monitora tutte le colture su qualsiasi mappa, comprese le colture di mappe e mod:
+- Tutto ciò che viene raccolto con mietitrebbia, trincia, raccoglitrice di tuberi, cotone, canna da zucchero, uva o olive
+- Paglia, erba e fieno raccolti da presse e carri autocaricanti, sul terreno in cui sono stati raccolti
 
 Changelog
-1.0.1
+1.0.0.1
 * Aggiunta traduzione in polacco
 * Aggiunta traduzione in ceco
 * Aggiunta traduzione in portoghese
 * Aggiunta traduzione in portoghese brasiliano
 * Corretti errori di traduzione in tedesco
 
-1.0.2
+1.0.0.2
 * Corretto il file di traduzione ceco da cs a cz (@cert23)
 * Aggiunta traduzione in italiano (@FirenzeIT)
 * Aggiunta la traduzione per il testo dei pulsanti "Mostra tutti i campi" & "Mostra i campi posseduti"
 
+1.1.0.0
+* La resa viene ora registrata direttamente durante il raccolto (corregge le rese mancanti durante lo scarico in movimento e le quantità errate al cambio del rimorchio)
+* Supporta tutte le colture su qualsiasi mappa, comprese le colture di mappe/mod (nessun elenco fisso)
+* Aggiunti carote, barbabietole rosse, pastinache, barbabietole da zucchero, canna da zucchero, uva e olive
+* Aggiunti i carri autocaricanti (erba, fieno, paglia)
+* Il materiale scaricato di nuovo a terra (es. paglia scaricata, balle aperte) non viene più contato due volte quando viene raccolto
+* I dati di salvataggio memorizzano ora le colture per nome, così restano corretti quando si aggiungono o rimuovono mappe/mod
+* Lo storico delle rese delle versioni precedenti viene convertito automaticamente. Le quantità registrate dalle versioni precedenti potrebbero essere meno precise di quelle nuove.
+
 Feedback o problemi?
-Segnala bug o contribuisci su GitHub: https://github.com/AntCant/FS25_YieldTracker
+Segnala bug su GitHub: https://github.com/AntCant/FS25_YieldTracker
 ]]>
 </it>
 </description>

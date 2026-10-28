@@ -11,12 +11,6 @@ YieldTrackerPage._mt = Class(YieldTrackerPage, TabbedMenuFrameElement)
 YieldTrackerPage.debug = false
 YieldTrackerPage.dir = g_currentModDirectory
 
--- source(g_currentModDirectory .. "scripts/yieldTrackerPage.lua") --> YieldTracker.yieldData -- BUG -- CANNOT LOAD RESOURCE, THIS IS NOT THE CORRECT PATH FOR THE DATA. TESTING NEEDED TO SEE IF REQUIRED AND IF SO CHANGE PATH
-source(g_currentModDirectory .. "scripts/trackedCropTypes.lua") --> TrackedCropTypes
-
-local trackedCropTypes = TrackedCropTypes
-
-
 function YieldTrackerPage.new(i18n, messageCenter)
     local self = YieldTrackerPage:superClass().new(nil, YieldTrackerPage._mt)
     self.name = "YieldTrackerPage"
@@ -26,8 +20,8 @@ function YieldTrackerPage.new(i18n, messageCenter)
     self.dataBindings = {}
     self.farmlandIDs = {}
     self.yieldYears = {}
-    self.cropInfo = trackedCropTypes
-    self.selectedCrop = trackedCropTypes[1].fillTypeIndex
+    self.cropInfo = {}      -- fill type descs with recorded yield (any map, any mod crop)
+    self.selectedCrop = nil -- fill type index
     self.selectedField = 1
     self.showingOwnedFields = false
 
@@ -128,6 +122,7 @@ function YieldTrackerPage:onGuiSetupFinished()
     self.cropList:setDelegate(self)
 
     if self.cropList then
+        self:getCropInfo()
         self.cropList:reloadData()
     end
 
@@ -158,6 +153,9 @@ function YieldTrackerPage:onFrameOpen()
         self:debugMessage("Error: farmlandList not found in onFrameOpen")
     end
 
+    -- Crops harvested since the menu was last opened need to show up
+    self:refreshCropList()
+
     if self.yieldPerYearList then
         self:setSelectedPageData()
         self.yieldPerYearList:reloadData()
@@ -185,15 +183,51 @@ function YieldTrackerPage:getFarmlandIDs()
 end
 
 
+-- Builds the crop list from the fill types harvested on the selected field.
+-- Keeps the crop the player last picked when this field has it, so the same crop can be compared across fields.
+function YieldTrackerPage:getCropInfo()
+    self.cropInfo = YieldTracker:getRecordedFillTypes(self.selectedField)
+
+    local preferredCrop = self.preferredCrop or self.selectedCrop
+    for _, crop in ipairs(self.cropInfo) do
+        if crop.index == preferredCrop then
+            self.selectedCrop = crop.index
+            return self.cropInfo
+        end
+    end
+
+    self.selectedCrop = self.cropInfo[1] ~= nil and self.cropInfo[1].index or nil
+    return self.cropInfo
+end
+
+
+-- Reloads the crop list and keeps the highlighted row on the selected crop.
+function YieldTrackerPage:refreshCropList()
+    self:getCropInfo()
+    if self.cropList == nil then return end
+
+    self.cropList:reloadData()
+    for i, crop in ipairs(self.cropInfo) do
+        if crop.index == self.selectedCrop then
+            self.cropList:setSelectedItem(1, i, false, false)
+            break
+        end
+    end
+end
+
+
 function YieldTrackerPage:onClickCropSelected(element)
     local selected = self.cropInfo[element.indexInSection]
-    self.selectedCrop = selected.fillTypeIndex
+    if selected == nil then return end
+    self.selectedCrop = selected.index
+    self.preferredCrop = selected.index
     self:setSelectedPageData()
 end
 
 
 function YieldTrackerPage:onClickFieldSelected(element)
     self.selectedField = self.farmlandIDs[element.indexInSection]
+    self:refreshCropList()
     self:setSelectedPageData()
 end
 
@@ -214,30 +248,33 @@ function YieldTrackerPage:initiateFieldCropStatsSearch()
     local foundData = false
     self.yieldYears = {} -- Clear existing data
 
-    self:debugMessage(string.format("Search stats for fill type index %d on field %d", selectedFillTypeIndex, selectedField))
-
     local yearAmountMap = {}
     local minYear = nil
 
-    -- Step 1: Collect data and find min year
-    for year, yearData in pairs(yieldData) do
-        local fieldData = yearData[selectedField]
-        if fieldData then
-            local cropData = fieldData[selectedFillTypeIndex]
-            if cropData then
-                yearAmountMap[year] = cropData.amount
-                minYear = (minYear == nil or year < minYear) and year or minYear
-                foundData = true
+    -- Step 1: Collect data and find min year (no crop selected means nothing has been recorded yet)
+    if selectedFillTypeIndex ~= nil then
+        local fillTypeName = tostring(g_fillTypeManager:getFillTypeNameByIndex(selectedFillTypeIndex))
+        self:debugMessage(string.format("Search stats for %s on field %d", fillTypeName, selectedField))
 
-                self:debugMessage(string.format(
-                    "Year %d - Field %d - Crop: %s - Amount: %d",
-                    year, selectedField, cropData.fillTypeTitle, cropData.amount
-                ))
+        for year, yearData in pairs(yieldData) do
+            local fieldData = yearData[selectedField]
+            if fieldData then
+                local cropData = fieldData[selectedFillTypeIndex]
+                if cropData then
+                    yearAmountMap[year] = cropData.amount
+                    minYear = (minYear == nil or year < minYear) and year or minYear
+                    foundData = true
+
+                    self:debugMessage(string.format(
+                        "Year %d - Field %d - Crop: %s - Amount: %d",
+                        year, selectedField, fillTypeName, cropData.amount
+                    ))
+                else
+                    self:debugMessage(string.format("Year %d - Field %d - No data for %s", year, selectedField, fillTypeName))
+                end
             else
-                self:debugMessage(string.format("Year %d - Field %d - No data for fill type index %d", year, selectedField, selectedFillTypeIndex))
+                self:debugMessage(string.format("Year %d - No data for field %d", year, selectedField))
             end
-        else
-            self:debugMessage(string.format("Year %d - No data for field %d", year, selectedField))
         end
     end
 
@@ -279,12 +316,12 @@ end
 
 function YieldTrackerPage:setOverviewStatsText()
     local cropName = ""
-    local cropIcon = ""
+    local cropIcon = nil
     local fieldID = self.selectedField or 0
 
     -- Get crop name from fillTypeIndex
     for _, crop in ipairs(self.cropInfo) do
-        if crop.fillTypeIndex == self.selectedCrop then
+        if crop.index == self.selectedCrop then
             cropName = crop.title
             cropIcon = crop.hudOverlayFilename
             break
@@ -306,15 +343,18 @@ function YieldTrackerPage:setOverviewStatsText()
     if selectedFieldNumText and selectedCropTypeText and selectedCropTypeIcon and selectedCropTotalHarvests and selectedCropAverageYield and selectedCropBestYear then
         selectedFieldNumText:setText(string.format("%s %d", self.i18n:getText("yt_fieldIDLabel"), fieldID))
 
-        local cropKey = cropName:lower():gsub(" ", "") .. "Label"
-        selectedCropTypeText:setText(self.i18n:getText(cropKey) or cropName)
+        -- Fill type titles are already localized by the game (including map/mod crops)
+        selectedCropTypeText:setText(cropName)
 
         selectedCropTotalHarvests:setText(selectedOverviewData.totalYears)
         selectedCropAverageYield:setText(string.format("%s l", formatWithCommas(selectedOverviewData.averageYield)))
 
         selectedCropBestYear:setText(string.format("%s %d  -->  %s l", self.i18n:getText("yt_yearLabel"), selectedOverviewData.highestYear, formatWithCommas(selectedOverviewData.highestYieldAmount)))
 
-        selectedCropTypeIcon:setImageFilename(cropIcon)
+        if cropIcon ~= nil then
+            selectedCropTypeIcon:setImageFilename(cropIcon)
+        end
+        selectedCropTypeIcon:setVisible(cropIcon ~= nil)
     end
 end
 
@@ -499,12 +539,14 @@ function YieldTrackerPage:populateCellForItemInSection(list, sectionIndex, index
             local icon = listItem:getAttribute("icon")
 
             if cropListText then
-                local cropKey = crop.title:lower():gsub(" ", "") .. "Label"
-                cropListText:setText(self.i18n:getText(cropKey) or crop.title)
+                cropListText:setText(crop.title)
             end
 
             if icon then
-                icon:setImageFilename(crop.hudOverlayFilename)
+                if crop.hudOverlayFilename ~= nil then
+                    icon:setImageFilename(crop.hudOverlayFilename)
+                end
+                icon:setVisible(crop.hudOverlayFilename ~= nil)
             end
         end
     elseif list == self.yieldPerYearList then

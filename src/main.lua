@@ -28,16 +28,10 @@ function MainHandler:loadMap(name)
     YieldTrackerGUI:setup()    -- Initialize the GUI components
 end
 
----Called every frame to perform per-tick updates.
----Only runs if mod is enabled. Delegates update logic to YieldTracker.
-function MainHandler:update(dt)
-    if not self.enabled then return end
-    YieldTracker:updateByFrame()
-end
-
 ---Called when the map is being deleted/unloaded.
----Stub provided for potential future cleanup logic.
+---Clears tracked data so nothing carries over into another savegame.
 function MainHandler:deleteMap()
+    YieldTracker:shutdown()
 end
 
 -- Register MainHandler to receive game loop events (loadMap, update, etc.)
