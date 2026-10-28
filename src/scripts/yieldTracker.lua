@@ -17,7 +17,7 @@ YieldTracker = {
     saveVersion = 2,
     isActive = false,
 }
-YieldTracker.debug = true
+YieldTracker.debug = false
 
 
 
